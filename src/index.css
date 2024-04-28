@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font: "BebasNeueProRegular";
+   {
+    font-family: "BebasNeueProRegular";
+  }
+}
+
+:root {
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  /* background-color: #242424; */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1 {
+  font-size: 50px !important;
+}
+h2 {
+  font-size: 40px !important;
+}
+h3 {
+  font-size: 35px !important;
+}
+
+.btn-main-normal {
+  display: flex;
+  width: fit-content;
+  justify-content: space-between;
+  border: solid transparent 2px;
+  border-radius: 0.5rem;
+  /* padding: 4px; */
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  transition: all 0.3s ease;
+  /* background-color: #000; */
+  cursor: pointer;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.btn-main-normal:hover {
+  border-color: #34d399;
+  /* color: #48ffbc; */
+  background-color: transparent;
+}
+
+.btn-main-normal.dark {
+  box-shadow: 0 0 1rem rgba(46, 204, 113, 0.1);
+}
+
+.btn-main-normal.dark:hover {
+  box-shadow: 0 0 1.5rem rgba(46, 204, 113, 0.3);
+}
