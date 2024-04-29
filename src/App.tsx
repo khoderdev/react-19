@@ -7,21 +7,28 @@ import Features from './components/Features'
 import Users from './components/Users'
 import Dashboard from './components/Dashboard'
 import Login from './components/Login'
-function App() {
+import { NameProvider } from './contexts/NameContext';
+import OrderDeliveryStatus from './components/OrderDeliveryStatus';
+import OrderStatusDisplay from './components/OrderStatusDisplay';
 
+function App() {
 
   return (
     <>
-      <Header />
-      <Layout>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/features' element={<Features />} />
-          <Route path='/users' element={<Users />} />
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/login' element={<Login />} />
-        </Routes >
-      </Layout >
+      <NameProvider>
+        <Header />
+        <Layout>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path="/order" element={<OrderDeliveryStatus />} />
+            <Route path="/status" element={<OrderStatusDisplay />} />
+            <Route path='/features' element={<Features />} />
+            <Route path='/users' element={<Users />} />
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/login' element={<Login />} />
+          </Routes >
+        </Layout >
+      </NameProvider>
     </>
   )
 }
