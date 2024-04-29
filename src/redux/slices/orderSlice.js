@@ -1,4 +1,3 @@
-// src/features/orderSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -11,7 +10,7 @@ const orderSlice = createSlice({
   reducers: {
     updateDeliveryStatus(state, action) {
       state.deliveryStatus = action.payload;
-      localStorage.setItem("deliveryStatus", action.payload); // Save to local storage
+      localStorage.setItem("deliveryStatus", action.payload);
     },
   },
 });
