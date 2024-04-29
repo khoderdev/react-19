@@ -5,7 +5,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import ThemeToggle from './ThemeToggle';
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ');
 }
 
@@ -43,7 +43,7 @@ export default function Header() {
         <header className={` text-black-text dark:text-white-text fixed top-0 !drop-shadow-lg w-full transition-all duration-300 flex justify-center ${visible ? '' : ''}`} style={{ backgroundColor: 'rgba(0, 0, 0, 0.0)', backdropFilter: 'blur(10px)' }}>
             <nav className="mx-auto flex items-center justify-between p-4 py-2 lg:px- max-w-screen-xl w-full" aria-label="Global">
                 <Link to="/" className="-m-1.5 p-1.5">
-                    <div className="!text-[2rem] font-semibold text-[#ef4444]">React 19</div>
+                    <div className="!text-[3rem] font-bold !fo text-[#ef4444]">React 19</div>
                 </Link>
                 <div className="flex justify-center items-center lg:hidden gap-4">
                     <ThemeToggle />
@@ -61,8 +61,8 @@ export default function Header() {
                     <Link to='/' className="text-md font-semibold leading-6 ">
                         Home
                     </Link>
-                    <Link to="/features" className="text-md font-semibold leading-6 ">
-                        Features
+                    <Link to="/order" className="text-md font-semibold leading-6 ">
+                        Order
                     </Link>
                     <Link to="/users" className="text-md font-semibold leading-6 ">
                         Users
@@ -123,10 +123,10 @@ export default function Header() {
                                 )}
                             </Disclosure>
                             <Link
-                                to="/features"
+                                to="/order"
                                 className="block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#34d399] hover:bg-[#242424]"
                             >
-                                Features
+                                Order
                             </Link>
                             <Link
                                 to="/users"

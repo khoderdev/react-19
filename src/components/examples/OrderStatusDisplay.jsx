@@ -1,4 +1,3 @@
-// src/components/OrderStatusDisplay.js
 import React, { useEffect, useState } from "react";
 
 function OrderStatusDisplay() {
@@ -23,7 +22,9 @@ function OrderStatusDisplay() {
       <h3>Order Status Display</h3>
       <h2>
         Updated Delivery Status:
-        <span className="text-red-pri ml-4 font-semibold">{deliveryStatus}</span>
+        <span className="text-red-pri ml-4 font-semibold">
+          {deliveryStatus}
+        </span>
       </h2>
     </div>
   );

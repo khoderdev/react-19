@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
+    fontFamily: {
+      sans: ["EB Garamond", "serif"],
+    },
     colors: {
       green: {
         pri: "#34d399",
