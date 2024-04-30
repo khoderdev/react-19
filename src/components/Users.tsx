@@ -1,6 +1,8 @@
+import React from 'react'
+
 function Users() {
     return (
-        <div className="text-center text-3xl">Users</div>
+        <div>Users</div>
     )
 }
 

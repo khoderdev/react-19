@@ -1,7 +1,8 @@
+import React from 'react'
 
 function Features() {
     return (
-        <div className="text-center text-3xl">Features</div>
+        <div>Features</div>
     )
 }
 

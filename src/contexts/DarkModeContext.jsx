@@ -10,9 +10,6 @@ export const DarkModeProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    // Apply your dark mode logic here, e.g., toggle CSS classes, update styles, etc.
-
-    // For example, you can add or remove a 'dark' class from the body:
     if (isDarkMode) {
       document.body.classList.add("dark");
     } else {

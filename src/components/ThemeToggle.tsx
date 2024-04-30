@@ -14,7 +14,7 @@ export default function ThemeToggle() {
         onChange={toggleDarkMode}
       />
       <label
-        className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-green-pri hover:bg-green-sec dark:bg-slate-700 dark:hover:bg-slate-600/80"
+        className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-green-sec hover:bg-green-pri dark:bg-slate-700 dark:hover:bg-slate-600/80"
         htmlFor="light-switch"
       >
         <svg
@@ -40,11 +40,11 @@ export default function ThemeToggle() {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            className="fill-current text-green-pri"
+            className="fill-current text-green-sec"
             d="M6.2 2C3.2 2.8 1 5.6 1 8.9 1 12.8 4.2 16 8.1 16c3.3 0 6-2.2 6.9-5.2C9.7 12.2 4.8 7.3 6.2 2Z"
           />
           <path
-            className="fill-current text-green-pri"
+            className="fill-current text-green-sec"
             d="M12.5 6a.625.625 0 0 1-.625-.625 1.252 1.252 0 0 0-1.25-1.25.625.625 0 1 1 0-1.25 1.252 1.252 0 0 0 1.25-1.25.625.625 0 1 1 1.25 0c.001.69.56 1.249 1.25 1.25a.625.625 0 1 1 0 1.25c-.69.001-1.249.56-1.25 1.25A.625.625 0 0 1 12.5 6Z"
           />
         </svg>
