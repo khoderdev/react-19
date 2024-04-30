@@ -8,8 +8,8 @@ import Users from './components/Users'
 import Dashboard from './components/Dashboard'
 import Login from './components/Login'
 
-import OrderDeliveryStatus from './components/examples/OrderDeliveryStatus';
-import OrderStatusDisplay from './components/examples/OrderStatusDisplay';
+import OrdersControl from './components/examples/OrdersControl';
+import OrdersDisplay from './components/examples/OrdersDisplay';
 import UseReducerExample from './components/examples/UseReducerExample'
 import ReduxExample from './components/examples/CounterReduxExample'
 import NameReduxExample from './components/examples/NameReduxExample'
@@ -30,8 +30,8 @@ function App() {
       <Layout>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/order' element={<OrderDeliveryStatus />} />
-          <Route path='/status' element={<OrderStatusDisplay />} />
+          <Route path='/orders/control' element={<OrdersControl />} />
+          <Route path='orders/status' element={<OrdersDisplay />} />
           <Route path='/tasks/manager' element={<TaskManagerComponent />} />
           <Route path='/tasks/list' element={<TaskComponent tasks={tasks} />
           } />
