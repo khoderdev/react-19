@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 function HomePage() {
   return (
     <div className="flex flex-col justify-center items-center">
-      <h2 className="text-3xl my-14 font-bold">Welcome to Your Dashboard</h2>
+      <h2 className="!text-3xl md:!text-4xl my-14 font-bold leading-normal">Welcome to Your Dashboard</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-12">
         <div className="card w-64 h-48 justify-start p-4 hover:shadow-green-pri hover:border-green-pri text-center flex-col flex items-center border-2 border-green-sec shadow-md hover:shadow-md hover:transition-all hover:duration-200 rounded-lg overflow-hidden">
