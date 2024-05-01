@@ -42,6 +42,9 @@ function HomePage() {
             <Link to='/table/control' className="btn-main-lg">
               Control
             </Link>
+            <Link to='/table/form' className="btn-main-lg">
+              Form
+            </Link>
             <Link to='/table/list' className="btn-main-lg">
               List
             </Link>

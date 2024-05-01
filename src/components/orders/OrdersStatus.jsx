@@ -19,7 +19,9 @@ function OrdersStatus() {
 
   return (
     <div>
-      <h3>Order Status Display</h3>
+      <div className="text-2xl my-10 text-center">
+        Order Status Display
+      </div>
       <h2>
         Updated Delivery Status:
         <span className="text-red-pri ml-4 font-semibold">

@@ -4,7 +4,6 @@ import Home from './components/Home'
 import Layout from './components/Layout'
 import Header from './components/Header'
 import Features from './components/Features'
-import Users from './components/Users'
 
 import Login from './components/Login'
 
@@ -22,8 +21,9 @@ import ReduxExample from './components/examples/CounterReduxExample'
 import TaskManagerComponent from './components/TaskManagerComponent'
 import TaskComponent from './components/TaskComponent'
 import TableControl from './components/tables/TableControl';
-import TableDisplay from './components/tables/TableDisplay';
 import TablePage from './components/tables';
+import TableForm from './components/tables/TableForm';
+import OrdersTableReadOnly from './components/tables/OrdersTableReadOnly';
 
 
 function App() {
@@ -46,7 +46,9 @@ function App() {
 
           <Route path='/table' element={<TablePage />} />
           <Route path='/table/control' element={<TableControl />} />
-          <Route path='/table/list' element={<TableDisplay />} />
+          <Route path='/table/form' element={<TableForm />} />
+          <Route path='/table/list' element={<OrdersTableReadOnly />} />
+
 
           <Route path='/users' element={<UsersPage />} />
           <Route path='/users/control' element={<UsersControl />} />

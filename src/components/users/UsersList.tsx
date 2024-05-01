@@ -19,7 +19,10 @@ function UsersList() {
 
     return (
         <>
-            <h2 className="mt-20">
+            <div className="text-2xl my-10 text-center">
+                Order Status Display
+            </div>
+            <h2>
                 Users List and Status:
                 <span className="text-red-pri ml-4 font-semibold">
                     {userStatus}
