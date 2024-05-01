@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function OrdersDisplay() {
+function OrdersStatus() {
   const [deliveryStatus, setDeliveryStatus] = useState(
     localStorage.getItem("deliveryStatus") || ""
   );
@@ -30,4 +30,4 @@ function OrdersDisplay() {
   );
 }
 
-export default OrdersDisplay;
+export default OrdersStatus;

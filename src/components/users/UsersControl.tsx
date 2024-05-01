@@ -70,7 +70,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUserStatus } from "../../redux/slices/userSlice";
 
-function UserButtonsUpdate() {
+function UsersControl() {
     // Selecting the userStatus from the Redux store state
     const userStatus = useSelector((state) => state.user.userStatus);
 
@@ -108,4 +108,4 @@ function UserButtonsUpdate() {
     );
 }
 
-export default UserButtonsUpdate;
+export default UsersControl;

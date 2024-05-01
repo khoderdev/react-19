@@ -40,7 +40,7 @@ export default function Header() {
     }, [prevScrollPos, visible]);
 
     return (
-        <header className={` text-black-text dark:text-white-text fixed top-0 !drop-shadow-lg w-full transition-all duration-300 flex justify-center ${visible ? '' : ''}`} style={{ backgroundColor: 'rgba(0, 0, 0, 0.0)', backdropFilter: 'blur(10px)' }}>
+        <header className={` text-black-text dark:text-white-text fixed top-0 border-b border-b-black-contents !drop-shadow-lg w-full transition-all duration-300 flex justify-center ${visible ? '' : ''}`} style={{ backgroundColor: 'rgba(0, 0, 0, 0.0)', backdropFilter: 'blur(10px)' }}>
             <nav className="mx-auto flex items-center justify-between p-4 py-2 lg:px- max-w-screen-xl w-full" aria-label="Global">
                 <Link to="/" className="-m-1.5 p-1.5">
                     <div className="!text-[3rem] font-bold !fo text-[#ef4444]">React 19</div>
@@ -61,14 +61,14 @@ export default function Header() {
                     <Link to='/' className="text-md font-semibold leading-6 ">
                         Home
                     </Link>
-                    <Link to="/order" className="text-md font-semibold leading-6 ">
+                    <Link to="/orders" className="text-md font-semibold leading-6 ">
                         Order
                     </Link>
                     <Link to="/users" className="text-md font-semibold leading-6 ">
                         Users
                     </Link>
-                    <Link to="/dashboard" className="text-md font-semibold leading-6 ">
-                        Dashboard
+                    <Link to="/table" className="text-md font-semibold leading-6 ">
+                        Tables
                     </Link>
                 </div>
                 {/* <div className="flex items-center gap-4"> */}

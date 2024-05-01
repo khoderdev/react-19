@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function UserStatus() {
+function UsersList() {
     const [userStatus, setUserStatus] = useState(
         localStorage.getItem("userStatus") || ""
     );
@@ -18,15 +18,15 @@ function UserStatus() {
     }, []);
 
     return (
-        <div>
-            <h2>
-                User Status:
+        <>
+            <h2 className="mt-20">
+                Users List and Status:
                 <span className="text-red-pri ml-4 font-semibold">
                     {userStatus}
                 </span>
             </h2>
-        </div>
+        </>
     );
 }
 
-export default UserStatus;
+export default UsersList;
