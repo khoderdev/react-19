@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
-  fetchOrdersFromServer,
   updateOrderOnServer,
   deleteOrderFromServer,
 } from '../../redux/slices/ordersApi';
@@ -15,20 +14,6 @@ interface Props {
 const OrdersTable: React.FC<Props> = ({ updateOrder, deleteOrder, disableActions = false, data }) => {
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editedData, setEditedData] = useState<unknown>({ id: 0, DrugName: '', Quantity: '', Manufacturer: '', ManufacturerCountry: '', Status: '' });
-  // const [data, setData] = useState<unknown[]>([]);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const orders = await fetchOrdersFromServer();
-      setData(orders);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
 
   const handleEdit = (id: number) => {
     setEditingId(id);
@@ -44,7 +29,7 @@ const OrdersTable: React.FC<Props> = ({ updateOrder, deleteOrder, disableActions
         await updateOrderOnServer(editedData.id, editedData);
         updateOrder(editedData);
         setEditingId(null);
-        setEditedData({ id: 0, DrugName: '', Quantity: '', Manufacturer: '', ManufacturerCountry: '', Status: '' });
+        setEditedData({ DrugName: '', Quantity: '', Manufacturer: '', ManufacturerCountry: '', Status: '' });
       } catch (error) {
         console.error('Error updating order:', error);
       }
@@ -78,7 +63,7 @@ const OrdersTable: React.FC<Props> = ({ updateOrder, deleteOrder, disableActions
           </tr>
         </thead>
         <tbody>
-          {data.map((row: any) => (
+          {data.map((row: unknown) => (
             <tr key={row.id}>
               <td className="border px-4 py-2">
                 {editingId === row.id ? (

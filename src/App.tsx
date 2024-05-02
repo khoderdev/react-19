@@ -49,14 +49,12 @@ function App() {
           <Route path='/table/form' element={<TableForm />} />
           <Route path='/table/list' element={<OrdersTableReadOnly />} />
 
-
           <Route path='/users' element={<UsersPage />} />
           <Route path='/users/control' element={<UsersControl />} />
           <Route path='/users/list' element={<UsersList />} />
 
           <Route path='/useReducer' element={<UseReducerExample />} />
           <Route path='/reduxCounter' element={<ReduxExample />} />
-
 
           <Route path='/features' element={<Features />} />
           <Route path='/login' element={<Login />} />

@@ -1,50 +1,48 @@
-// // src/components/OrdersControl.js
-// import React, { useState } from "react";
-// import { useSelector, useDispatch } from "react-redux";
-// import { updateDeliveryStatus } from "../redux/slices/orderSlice";
-
-// function OrdersControl() {
-//   const deliveryStatus = useSelector((state) => state.order.deliveryStatus);
-//   const dispatch = useDispatch();
-//   const [newStatus, setNewStatus] = useState("");
-
-//   const handleStatusChange = (e) => {
-//     setNewStatus(e.target.value);
-//   };
-
-//   const handleUpdateStatus = () => {
-//     dispatch(updateDeliveryStatus(newStatus));
-//   };
-
-//   return (
-//     <div>
-//       <h2>Order Delivery Status</h2>
-//       <p>Current Status: {deliveryStatus}</p>
-//       <input type="text" value={newStatus} onChange={handleStatusChange} />
-//       <button onClick={handleUpdateStatus}>Update Status</button>
-//     </div>
-//   );
-// }
-
-// export default OrdersControl;
-
-// ////////////////////////////////////////////
-
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { updateDeliveryStatus } from "../../redux/slices/orderSlice";
+import {
+  updateDeliveryStatus,
+  updateDrugName,
+  updateQuantity,
+  updateManufacturerCountry,
+  updateManufacturer,
+} from "../../redux/slices/orderSlice";
 
 function OrdersControl() {
   const deliveryStatus = useSelector((state) => state.order.deliveryStatus);
   const dispatch = useDispatch();
   const [newStatus, setNewStatus] = useState("");
+  const [newDrugName, setNewDrugName] = useState("");
+  const [newQuantity, setNewQuantity] = useState("");
+  const [newManufacturer, setNewManufacturer] = useState("");
+  const [newManufacturerCountry, setNewManufacturerCountry] = useState("");
 
   const handleStatusChange = (e) => {
     setNewStatus(e.target.value);
   };
 
+  const handleDrugNameChange = (e) => {
+    setNewDrugName(e.target.value);
+  };
+
+  const handleQuantityChange = (e) => {
+    setNewQuantity(e.target.value);
+  };
+
+  const handleCountryChange = (e) => {
+    setNewManufacturer(e.target.value);
+  };
+
+  const handleManufacturerCountryChange = (e) => {
+    setNewManufacturerCountry(e.target.value);
+  };
+
   const handleUpdateStatus = () => {
     dispatch(updateDeliveryStatus(newStatus));
+    dispatch(updateDrugName(newDrugName));
+    dispatch(updateQuantity(newQuantity));
+    dispatch(updateManufacturer(newManufacturer));
+    dispatch(updateManufacturerCountry(newManufacturerCountry));
   };
 
   return (
@@ -68,6 +66,46 @@ function OrdersControl() {
         <option value="Delivered">Delivered</option>
         <option value="Canceled">Canceled</option>
       </select>
+
+      <label>
+        Drug Name
+        <input
+          type="text"
+          value={newDrugName}
+          onChange={handleDrugNameChange}
+          className="w-full border rounded-md px-3 py-2 mb-4"
+        />
+      </label>
+
+      <label>
+        Quantity
+        <input
+          type="text"
+          value={newQuantity}
+          onChange={handleQuantityChange}
+          className="w-full border rounded-md px-3 py-2 mb-4"
+        />
+      </label>
+
+      <label>
+        Manufacturer
+        <input
+          type="text"
+          value={newManufacturer}
+          onChange={handleCountryChange}
+          className="w-full border rounded-md px-3 py-2 mb-4"
+        />
+      </label>
+
+      <label>
+        Manufacturer Country
+        <input
+          type="text"
+          value={newManufacturerCountry}
+          onChange={handleManufacturerCountryChange}
+          className="w-full border rounded-md px-3 py-2 mb-4"
+        />
+      </label>
 
       <button
         onClick={handleUpdateStatus}
