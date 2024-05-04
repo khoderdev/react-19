@@ -3,13 +3,10 @@ import { useSelector } from 'react-redux';
 import Home from './components/Home'
 import Layout from './components/Layout'
 import Header from './components/Header'
-import Features from './components/Features'
-
-import Login from './components/Login'
 
 import OrdersPage from './components/orders';
 
-import UsersPage from './components/Users'
+import UsersPage from './components/users'
 import UsersControl from './components/users/UsersControl'
 import UsersList from './components/users/UsersList'
 
@@ -40,8 +37,7 @@ function App() {
           <Route path='/todos' element={<Todo />} />
           <Route path='/todos/list' element={<TodosList />} />
 
-          <Route path='/features' element={<Features />} />
-          <Route path='/login' element={<Login />} />
+      
         </Routes>
       </Layout>
     </>
