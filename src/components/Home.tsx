@@ -36,16 +36,13 @@ function HomePage() {
 
         <div className="card w-64 h-48 justify-start p-4 hover:shadow-green-pri hover:border-green-pri text-center flex-col flex items-center border-2 border-green-sec shadow-md hover:shadow-md hover:transition-all hover:duration-200 rounded-lg overflow-hidden">
           <div className="p-4">
-            <h2 className="text-xl mb-2 font-bold text-yellow-pri">Tables</h2>
+            <h2 className="text-xl mb-2 font-bold text-yellow-pri">Todos</h2>
           </div>
           <div className="flex gap-2 p-4 bg-gray-200">
-            <Link to='/table/control' className="btn-main-lg">
-              Control
+            <Link to='/todos' className="btn-main-lg">
+              Todos
             </Link>
-            <Link to='/table/form' className="btn-main-lg">
-              Form
-            </Link>
-            <Link to='/table/list' className="btn-main-lg">
+            <Link to='/todos/list' className="btn-main-lg">
               List
             </Link>
           </div>

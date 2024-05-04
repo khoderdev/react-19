@@ -9,7 +9,7 @@ function OrdersPage() {
                 <Link to='/orders/control' className="bg-blue-sec hover:bg-blue-pri text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                     Control
                 </Link>
-                <Link to='/orders/status' className="bg-blue-sec hover:bg-blue-pri text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                <Link to='/orders/list' className="bg-blue-sec hover:bg-blue-pri text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                     Status
                 </Link>
             </div>

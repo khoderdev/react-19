@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import getStatusColor from '../../utils/statusColors';
 
 const OrdersList = () => {
     const [orders, setOrders] = useState([]);
@@ -33,34 +34,39 @@ const OrdersList = () => {
         };
     }, []); // Empty dependency array ensures this effect runs only once on component mount
 
-
     return (
-        <div>
-            <h2>Orders List</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Drug Name</th>
-                        <th>Quantity</th>
-                        <th>Manufacturer</th>
-                        <th>Manufacturer Country</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {orders.map((order) => (
-                        <tr key={order.id}>
-                            <td>{order.DrugName}</td>
-                            <td>{order.Quantity}</td>
-                            <td>{order.Manufacturer}</td>
-                            <td>{order.ManufacturerCountry}</td>
-                            <td>{order.Status}</td>
+        <div className="overflow-x-auto">
+            <h2 className="text-lg font-semibold">Orders List</h2>
+            <div className="min-w-full">
+                <table className="table-auto">
+                    <thead>
+                        <tr>
+                            <th className="px-4 py-2">Drug Name</th>
+                            <th className="px-4 py-2">Quantity</th>
+                            <th className="px-4 py-2">Manufacturer</th>
+                            <th className="px-4 py-2">Country</th>
+                            <th className="px-4 py-2">Status</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {orders.map((order) => (
+                            <tr key={order.id}>
+                                <td className="border px-4 py-2">{order.DrugName}</td>
+                                <td className="border px-4 py-2">{order.Quantity}</td>
+                                <td className="border px-4 py-2">{order.Manufacturer}</td>
+                                <td className="border px-4 py-2">{order.ManufacturerCountry}</td>
+                                <td className="border px-4 py-2">
+                                    <span style={{ color: getStatusColor(order.Status) }}>{order.Status}</span>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+
+                </table>
+            </div>
         </div>
     );
+
 };
 
 export default OrdersList;
