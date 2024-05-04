@@ -24,10 +24,13 @@ import TableControl from './components/tables/TableControl';
 import TablePage from './components/tables';
 import TableForm from './components/tables/TableForm';
 import OrdersTableReadOnly from './components/tables/OrdersTableReadOnly';
+import PostsManager from './components/posts/PostsManager';
+import TodosList from './components/todos/TodosList';
+import Todo from './components/todos/Todos';
 
 
 function App() {
-  const tasks = useSelector((state) => state.tasks);
+  const todos = useSelector(state => state.todos);
 
   return (
     <>
@@ -41,7 +44,7 @@ function App() {
           <Route path='orders/status' element={<OrdersStatus />} />
 
           <Route path='/tasks/manager' element={<TaskManagerComponent />} />
-          <Route path='/tasks/list' element={<TaskComponent tasks={tasks} />
+          {/* <Route path='/tasks/list' element={<TaskComponent tasks={tasks} /> */}
           } />
 
           <Route path='/table' element={<TablePage />} />
@@ -52,6 +55,11 @@ function App() {
           <Route path='/users' element={<UsersPage />} />
           <Route path='/users/control' element={<UsersControl />} />
           <Route path='/users/list' element={<UsersList />} />
+
+          <Route path='/posts/manager' element={<PostsManager />} />
+
+          <Route path='/todos' element={<Todo />} />
+          <Route path='/todos/list' element={<TodosList  />} />
 
           <Route path='/useReducer' element={<UseReducerExample />} />
           <Route path='/reduxCounter' element={<ReduxExample />} />

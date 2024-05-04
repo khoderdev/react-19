@@ -150,17 +150,25 @@ export const fetchOrders = createAsyncThunk<
   return fetchOrdersFromServer();
 });
 
-export const addOrder = createAsyncThunk<AddOrderFulfilledAction["payload"]>(
+export const addOrder = createAsyncThunk(
   "orders/addOrder",
-  async (orderData: AddOrderPayload) => {
+  async (orderData, { rejectWithValue }) => {
     try {
       console.log("Adding order:", orderData);
-      const addedOrder = await addOrderToServer(orderData);
-      console.log("Added order:", addedOrder);
-      return addedOrder;
+      const addedOrderResponse = await addOrderToServer(orderData);
+      console.log("Response from server:", addedOrderResponse);
+
+      // Check if the response contains a message object
+      if (addedOrderResponse.message) {
+        // Return null to indicate that no valid order was added
+        return null;
+      }
+
+      // Return the added order data
+      return addedOrderResponse;
     } catch (error) {
       console.error("Error adding order:", error);
-      throw error;
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -191,11 +199,16 @@ export const deleteOrder = createAsyncThunk<
 });
 
 const initialState: OrderSliceState = {
-  deliveryStatus: localStorage.getItem("deliveryStatus") || "",
+  // deliveryStatus: localStorage.getItem("deliveryStatus") || "",
   DrugName: localStorage.getItem("DrugName") || "",
   Quantity: localStorage.getItem("Quantity") || "",
   Manufacturer: localStorage.getItem("Manufacturer") || "",
   ManufacturerCountry: localStorage.getItem("ManufacturerCountry") || "",
+
+  data: [],
+  deliveryStatus: "",
+  loading: false,
+  error: null,
 };
 
 const orderSlice = createSlice({
@@ -228,12 +241,12 @@ const orderSlice = createSlice({
       .addCase(
         fetchOrders.fulfilled,
         (state, action: FetchOrdersFulfilledAction) => {
-          state.orders = action.payload;
+          state.data = action.payload; // Update data field with fetched orders
           state.status = "succeeded";
         }
       )
       .addCase(addOrder.fulfilled, (state, action: AddOrderFulfilledAction) => {
-        console.log("Order added successfully:", action.payload);
+        state.data.push(action.payload); // Add new order to the data array
       })
       .addCase(addOrder.rejected, (state, action: AddOrderRejectedAction) => {
         console.error("Error adding order:", action.error);

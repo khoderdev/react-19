@@ -3,33 +3,38 @@ const apiUrl = "http://localhost:3005/orders";
 export const fetchOrdersFromServer = async () => {
   try {
     const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error("Failed to fetch orders");
+    }
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Error fetching orders:", error); 
+    console.error("Error fetching orders:", error);
     throw error;
   }
 };
 
 export const addOrderToServer = async (orderData) => {
-    try {
-      console.log("Sending request to add order:", orderData); 
-      const response = await fetch(`${apiUrl}/create`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(orderData),
-      });
-      const data = await response.json();
-    //   console.log("Response from server:", data); 
-      return data;
-    } catch (error) {
-      console.error("Error adding order:", error);
-      throw error;
+  try {
+    console.log("Sending request to add order:", orderData);
+    const response = await fetch(`${apiUrl}/create`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(orderData),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to add order");
     }
-  };
-  
+    const data = await response.json();
+    console.log("Response from server:", data);
+    return data;
+  } catch (error) {
+    console.error("Error adding order:", error);
+    throw error;
+  }
+};
 
 export const updateOrderOnServer = async (orderId, updatedOrderData) => {
   try {
