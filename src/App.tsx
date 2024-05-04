@@ -23,6 +23,8 @@ import TableForm from './components/tables/TableForm';
 import OrdersTableReadOnly from './components/tables/OrdersTableReadOnly';
 import TodosList from './components/todos/TodosList';
 import Todo from './components/todos/Todos';
+import OrdersTable from './components/orders/OrdersTable';
+import OrdersList from './components/orders/OrdersList';
 
 
 function App() {
@@ -35,9 +37,13 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
 
-          <Route path='/orders' element={<OrdersPage />} />
+          {/* <Route path='/orders' element={<OrdersPage />} />
           <Route path='/orders/control' element={<OrdersControl />} />
-          <Route path='orders/status' element={<OrdersStatus />} />
+          <Route path='orders/status' element={<OrdersStatus />} /> */}
+          <Route path='/orders' element={<OrdersPage />} />
+          <Route path='/orders/control' element={<OrdersTable />} />
+          <Route path='orders/list' element={<OrdersList />} />
+
 
           <Route path='/table' element={<TablePage />} />
           <Route path='/table/control' element={<TableControl />} />

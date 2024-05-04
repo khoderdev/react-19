@@ -107,7 +107,7 @@
 
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addOrder, updateOrder, deleteOrder } from "../../redux/slices/ordersSlice";
+import { addOrder, updateOrder, deleteOrder } from "../../redux/slices/ordersSliceOld2";
 import { AsyncThunkAction } from "@reduxjs/toolkit";
 import { RootState } from "../../redux/store";
 

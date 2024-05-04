@@ -65,7 +65,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import OrdersTable from './OrdersTable';
-import { fetchOrders } from '../../redux/slices/ordersSlice';
+import { fetchOrders } from '../../redux/slices/ordersSliceOld2';
 
 function OrdersTableReadOnly() {
     const dispatch = useDispatch();

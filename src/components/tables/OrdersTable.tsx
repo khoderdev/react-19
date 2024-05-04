@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
   updateOrderOnServer,
   deleteOrderFromServer,
-} from '../../redux/slices/ordersApi';
+} from '../../redux/slices/ordersApiOld1';
 
 interface Props {
   updateOrder: (updatedOrder: unknown) => void;

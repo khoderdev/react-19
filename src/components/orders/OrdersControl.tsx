@@ -8,7 +8,7 @@ import {
   updateManufacturer,
   fetchOrders,
   addOrder,
-} from "../../redux/slices/orderSlice";
+} from "../../redux/slices/orderSliceOld1";
 import Modal from "./Modal";
 
 interface Props {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchOrdersFromServer, updateOrderOnServer, deleteOrderFromServer } from '../../redux/slices/ordersApi';
+import { fetchOrdersFromServer, updateOrderOnServer, deleteOrderFromServer } from '../../redux/slices/ordersApiOld1';
 import OrdersTable from './OrdersTable';
 
 const OrdersTableControl = () => {
