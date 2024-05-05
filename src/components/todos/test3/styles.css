@@ -1,0 +1,54 @@
+/* styles.css */
+.todo-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.filter label {
+  margin-right: 10px;
+}
+
+.itemContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+.item {
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .filter label {
+    display: block;
+    margin-bottom: 5px;
+  }
+}
+
+.persist-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.persist-buttons button {
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .persist-buttons {
+    flex-direction: column;
+  }
+
+  .persist-buttons button {
+    margin-bottom: 5px;
+  }
+}

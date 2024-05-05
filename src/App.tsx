@@ -1,5 +1,5 @@
-import { Routes, Route, } from 'react-router-dom'
-import { useSelector } from 'react-redux';
+import { Suspense } from "react";
+import { Routes, Route } from 'react-router-dom'
 import Home from './components/Home'
 import Layout from './components/Layout'
 import Header from './components/Header'
@@ -10,37 +10,73 @@ import UsersPage from './components/users'
 import UsersControl from './components/users/UsersControl'
 import UsersList from './components/users/UsersList'
 
-import TodosList from './components/todos/TodosList';
-import Todo from './components/todos/Todos';
+import JotaiOrdersTable from './atom/examples/orders/OrdersTable';
+import JotaiOrdersList from  './atom/examples/orders/OrdersList';
+
 import OrdersTable from './components/orders/OrdersTable';
 import OrdersList from './components/orders/OrdersList';
-
+import Table from "./components/Table";
+import Action from "./components/examples/Actions";
+import Optimistic from "./components/examples/Optimistic";
+import FormState from "./components/examples/FormState";
+import FormStatus from "./components/examples/FormStatus";
+import User from "./components/examples/Users";
+import Orders from "./components/examples/Orders";
+import TodoPage from "./components/todos/test2/";
+import TodoAdd from "./components/todos/test2/TodoAdd";
+import TodoList from "./components/todos/test2/TodoList";
+;
 
 function App() {
-  const todos = useSelector(state => state.todos);
+  // const todos = useSelector(state => state.todos);
+
 
   return (
     <>
-      <Header />
-      <Layout>
-        <Routes>
-          <Route path='/' element={<Home />} />
 
-          <Route path='/orders' element={<OrdersPage />} />
-          <Route path='/orders/control' element={<OrdersTable />} />
-          <Route path='orders/list' element={<OrdersList />} />
+      <div>
+        <Suspense
+          fallback={
+            <h1 className="text-2xl text-center font-bold mt-5">Loading...</h1>
+          }
+        >
+          <Header />
+          <Layout>
+            <Routes>
+              <Route path='/' element={<Home />} />
 
-          <Route path='/users' element={<UsersPage />} />
-          <Route path='/users/control' element={<UsersControl />} />
-          <Route path='/users/list' element={<UsersList />} />
+              <Route path='/jotai/orders/table' element={<JotaiOrdersTable />} />
+              <Route path='/jotai/orders/list' element={<JotaiOrdersList />} />
 
-          <Route path='/todos' element={<Todo />} />
-          <Route path='/todos/list' element={<TodosList />} />
+              <Route path='/action' element={<Action />} />
+              <Route path='/optimistic' element={<Optimistic />} />
+              <Route path='/FormStatus' element={<FormStatus />} />
+              <Route path='/FormState' element={<FormState />} />
+              <Route path='/user' element={<User />} />
 
-      
-        </Routes>
-      </Layout>
+              <Route path='/orders' element={<OrdersPage />} />
+              <Route path='/orders/control' element={<OrdersTable />} />
+              <Route path='/orders/list' element={<OrdersList />} />
+
+              <Route path='/order' element={<Orders />} />
+
+              <Route path='/users' element={<UsersPage />} />
+              <Route path='/users/control' element={<UsersControl />} />
+              <Route path='/users/list' element={<UsersList />} />
+
+              <Route path='/table' element={<Table />} />
+
+              <Route path='/todos/2' element={<TodoPage />} />
+              <Route path='/todos/add' element={<TodoAdd />} />
+              <Route path='/todos/list' element={<TodoList />} />
+              {/* <Route path='/todos' element={<Todos />} />
+                <Route path='/todos/add' element={<Todo />} />
+                <Route path='/todos/list' element={<TodosList />} /> */}
+            </Routes>
+          </Layout>
+        </Suspense>
+      </div>
     </>
   );
 }
-export default App
+export default App;

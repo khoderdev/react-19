@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import orderReducer from "./slices/orderSliceOld1";
+import authReducer from "./slices/authSlice";
 import todoReducer from "./slices/todoSlice";
 import userReducer from "./slices/userSlice";
 import ordersReducer from "./slices/ordersSlice";
 import logger from "redux-logger";
 
 type RootState = {
-  // order: ReturnType<typeof orderReducer>;
+  auth: ReturnType<typeof authReducer>;
   todos: ReturnType<typeof todoReducer>;
   user: ReturnType<typeof userReducer>;
   orders: ReturnType<typeof ordersReducer>;
@@ -16,7 +16,7 @@ export type { RootState };
 
 export const store = configureStore({
   reducer: {
-    // order: orderReducer,
+    auth: authReducer,
     todos: todoReducer,
     user: userReducer,
     orders: ordersReducer,

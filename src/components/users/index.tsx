@@ -1,7 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useAtom } from 'jotai'
+import { userNameAtom } from '../../atom/store'
+
 
 function UsersPage() {
+    const [userName,] = useAtom(userNameAtom);
     return (
         <div className="flex flex-col justify-center items-center">
             <div className="text-2xl mb-10">Users Page</div>
@@ -13,6 +17,7 @@ function UsersPage() {
                     List
                 </Link>
             </div>
+            <h1>{userName}</h1>
         </div>
     )
 }
