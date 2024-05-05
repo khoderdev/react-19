@@ -19,7 +19,7 @@ const Form = () => {
         Status: 'Pending',
     });
     // Initialize a state variable successMessage using useState, representing the success message status with default value as false
-    const [successMessage, setSuccessMessage] = useState(false);
+    const [successMessage, setSuccessMessage] = useState(true);
     // Get successMessageTimeoutAtom directly from the store using Jotai's useAtom hook
     const [successMessageTimeout, setSuccessMessageTimeout] = useAtom(successMessageTimeoutAtom);
     const navigate = useNavigate()
@@ -32,7 +32,7 @@ const Form = () => {
     };
 
     // Define a handleSubmit function to handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => { // Make the handleSubmit function asynchronous
         // Prevent the default form submission behavior
         e.preventDefault();
         // Set the submitting state to true to indicate form submission is in progress
@@ -55,7 +55,7 @@ const Form = () => {
         });
 
         // Set submitting to false after 1000 milliseconds to simulate a delay
-        setTimeout(() => {
+        setTimeout(async () => { // Make the setTimeout callback asynchronous
             setSubmitting(false);
 
             // After submission, set the success message to true and define a timeout to reset it after 3000 milliseconds
@@ -65,8 +65,27 @@ const Form = () => {
             }, 3000); // Change the timeout duration to 3000 milliseconds (3 seconds)
             // Set the success message timeout atom to the defined timeout
             setSuccessMessageTimeout(timeout);
+
+            // Add the API request here
+            try {
+                const response = await fetch("http://localhost:3005/orders/create", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(formData),
+                });
+                if (!response.ok) {
+                    throw new Error("Failed to submit order");
+                }
+                // Handle successful response if needed
+            } catch (error) {
+                console.error("Error submitting order:", error.message);
+                // Handle error if needed
+            }
         }, 1000); // Change the timeout duration to 1000 milliseconds (1 second)
     };
+
 
     const handleGoBack = () => {
         navigate('/jotai/orders/list')
@@ -82,7 +101,7 @@ const Form = () => {
             </div>
             <h4 className='flex'>Add new order  </h4>
             {successMessage && (
-                <p className='text-xl font-semibold border rounded-md p-2 !text-green-pri text-center'>Order has been Submitted successfully!</p>
+                <p className='text-xl font-semibold border rounded-md p-4 shadow-md shadow-[#22c55ea8] !text-green-pri text-center my-6'>Order has been Submitted successfully!</p>
             )}
             <div className='flex flex-col md:w-[30%] justify-center gap-4'>
                 <div>

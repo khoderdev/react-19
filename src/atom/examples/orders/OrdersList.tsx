@@ -1,11 +1,9 @@
-
 import getStatusColor from '../../../utils/statusColors';
 import { useAtom } from 'jotai';
 import { ordersAtom } from '../../store';
 
 const OrdersList = () => {
     const [orders] = useAtom(ordersAtom);
-
 
     return (
         <div className="overflow-x-auto flex flex-col w-full justify-center items-center">
@@ -34,12 +32,10 @@ const OrdersList = () => {
                             </tr>
                         ))}
                     </tbody>
-
                 </table>
             </div>
         </div>
     );
-
 };
 
 export default OrdersList;

@@ -1,136 +1,10 @@
-// import { useEffect, useState } from 'react';
-// import Modal from './Modal';
-// import getStatusColor from '../../../utils/statusColors';
-// import { ordersAtom } from '../../store';
-// import { useAtom } from 'jotai';
-
-// const OrdersTable = () => {
-//     const [orders, setOrdersAtom] = useAtom(ordersAtom);
-//     const [showForm, setShowForm] = useState(false);
-//     const [formData, setFormData] = useState({
-//         DrugName: '',
-//         Quantity: '',
-//         Manufacturer: '',
-//         ManufacturerCountry: '',
-//         Status: 'Pending',
-//     });
-//     const [editMode, setEditMode] = useState(false);
-//     const [editOrderId, setEditOrderId] = useState(null);
-//     const [showConfirmation, setShowConfirmation] = useState(false);
-//     const [orderToDelete, setOrderToDelete] = useState(null);
-
-//     // Ensure orders is initialized as an array
-//     useEffect(() => {
-//         if (!Array.isArray(orders)) {
-//             setOrdersAtom([]);
-//         }
-//     }, [orders, setOrdersAtom]);
-
-//     const handleInputChange = (e) => {
-//         const { name, value } = e.target;
-//         setFormData(prevData => ({ ...prevData, [name]: value }));
-//     };
-
-//     const handleStatusChange = (e) => {
-//         const { value } = e.target;
-//         setFormData(prevData => ({ ...prevData, Status: value }));
-//     };
-
-//     const handleSubmit = (e) => {
-//         e.preventDefault();
-//         if (editMode && editOrderId !== null) {
-//             // Update existing order
-//             const updatedOrders = orders.map(order =>
-//                 order.id === editOrderId ? formData : order
-//             );
-//             setOrdersAtom(updatedOrders);
-//             setEditMode(false);
-//             setEditOrderId(null);
-//         } else {
-//             // Add new order
-//             const newOrder = {
-//                 ...formData,
-//                 id: Math.random().toString(36).substring(2, 9),
-//             };
-//             setOrdersAtom(prevOrders => [...prevOrders, newOrder]);
-//         }
-//         setShowForm(false);
-//         setFormData({
-//             DrugName: '',
-//             Quantity: '',
-//             Manufacturer: '',
-//             ManufacturerCountry: '',
-//             Status: 'Pending',
-//         });
-//     };
-
-//     const handleEditOrder = (id) => {
-//         // Find the order to edit
-//         const orderToEdit = orders.find(order => order.id === id);
-//         if (orderToEdit) {
-//             // Set the form data to the order's data
-//             setFormData(orderToEdit);
-//             // Show the form
-//             setShowForm(true);
-//             // Set edit mode and editOrderId
-//             setEditMode(true);
-//             setEditOrderId(id);
-//         }
-//     };
-
-//     const handleCancelEdit = () => {
-//         setShowForm(false);
-//         setEditMode(false);
-//         setEditOrderId(null);
-//         setFormData({
-//             DrugName: '',
-//             Quantity: '',
-//             Manufacturer: '',
-//             ManufacturerCountry: '',
-//             Status: 'Pending',
-//         });
-//     };
-
-//     const handleCancelCreate = () => {
-//         setShowForm(false);
-//         setFormData({
-//             DrugName: '',
-//             Quantity: '',
-//             Manufacturer: '',
-//             ManufacturerCountry: '',
-//             Status: 'Pending',
-//         });
-//     };
-
-//     const handleDeleteOrder = (id) => {
-//         // Set the order to delete and show confirmation modal
-//         setOrderToDelete(id);
-//         setShowConfirmation(true);
-//     };
-
-//     const confirmDelete = () => {
-//         // Filter out the order to delete
-//         const updatedOrders = orders.filter(order => order.id !== orderToDelete);
-//         setOrdersAtom(updatedOrders);
-//         // Hide the confirmation modal
-//         setShowConfirmation(false);
-//     };
-
-//     const handleCancelDelete = () => {
-//         // Reset the order to delete and hide the confirmation modal
-//         setOrderToDelete(null);
-//         setShowConfirmation(false);
-//     };
-
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Modal from './Modal';
 import getStatusColor from '../../../utils/statusColors';
 import { ordersAtom } from '../../store';
 import { useAtom } from 'jotai';
 
 const OrdersTable = () => {
-    // Initialize ordersAtom directly with a default empty array
     const [orders, setOrdersAtom] = useAtom(ordersAtom);
     const [showForm, setShowForm] = useState(false);
     const [formData, setFormData] = useState({
@@ -144,6 +18,76 @@ const OrdersTable = () => {
     const [editOrderId, setEditOrderId] = useState(null);
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [orderToDelete, setOrderToDelete] = useState(null);
+
+    const fetchOrders = async () => {
+        try {
+            const response = await fetch("http://localhost:3005/orders/");
+            if (!response.ok) {
+                throw new Error("Failed to fetch orders");
+            }
+            const ordersData = await response.json();
+            setOrdersAtom(ordersData);
+        } catch (error) {
+            console.error("Error fetching orders:", error.message);
+        }
+    };
+
+    useEffect(() => {
+        fetchOrders();
+    }, []); // Fetch orders on component mount
+
+    // API request function for creating a new order
+    const createOrder = async (data) => {
+        try {
+            const response = await fetch("http://localhost:3005/orders/create", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+            if (!response.ok) {
+                throw new Error("Failed to create order");
+            }
+            // Handle successful response if needed
+        } catch (error) {
+            console.error("Error creating order:", error.message);
+            // Handle error if needed
+        }
+    };
+
+    const updateOrder = async (id, data) => {
+        try {
+            const response = await fetch(`http://localhost:3005/orders/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+            if (!response.ok) {
+                throw new Error("Failed to update order");
+            }
+            fetchOrders(); // Refresh orders after update
+        } catch (error) {
+            console.error("Error updating order:", error.message);
+        }
+    };
+
+    const deleteOrder = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:3005/orders/${id}`, {
+                method: "DELETE",
+            });
+            if (!response.ok) {
+                throw new Error("Failed to delete order");
+            }
+            fetchOrders(); // Refresh orders after delete
+        } catch (error) {
+            console.error("Error deleting order:", error.message);
+        }
+    };
+
 
     // Rest of the component remains unchanged
     const handleInputChange = (e) => {
@@ -160,6 +104,7 @@ const OrdersTable = () => {
         e.preventDefault();
         if (editMode && editOrderId !== null) {
             // Update existing order
+            updateOrder(editOrderId, formData);
             const updatedOrders = orders.map(order =>
                 order.id === editOrderId ? formData : order
             );
@@ -168,11 +113,8 @@ const OrdersTable = () => {
             setEditOrderId(null);
         } else {
             // Add new order
-            const newOrder = {
-                ...formData,
-                id: Math.random().toString(36).substring(2, 9),
-            };
-            setOrdersAtom(prevOrders => [...prevOrders, newOrder]);
+            createOrder(formData); // Call the createOrder function to submit the order
+            setOrdersAtom(prevOrders => [...prevOrders, formData]); // Update the local state optimistically
         }
         setShowForm(false);
         setFormData({
@@ -229,6 +171,8 @@ const OrdersTable = () => {
     };
 
     const confirmDelete = () => {
+        // Delete the order
+        deleteOrder(orderToDelete);
         // Filter out the order to delete
         const updatedOrders = orders.filter(order => order.id !== orderToDelete);
         setOrdersAtom(updatedOrders);
