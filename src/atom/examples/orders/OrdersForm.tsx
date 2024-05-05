@@ -19,7 +19,7 @@ const Form = () => {
         Status: 'Pending',
     });
     // Initialize a state variable successMessage using useState, representing the success message status with default value as false
-    const [successMessage, setSuccessMessage] = useState(true);
+    const [successMessage, setSuccessMessage] = useState(false);
     // Get successMessageTimeoutAtom directly from the store using Jotai's useAtom hook
     const [successMessageTimeout, setSuccessMessageTimeout] = useAtom(successMessageTimeoutAtom);
     const navigate = useNavigate()
