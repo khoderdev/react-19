@@ -1,88 +1,56 @@
-// import React, { useState } from "react";
+import { Link } from 'react-router-dom'
 
-// function Home() {
-//   const [name, setName] = useState("Ahmid")
-
-//   const handleClick1 = () => {
-//     setName('Tonai')
-
-//   }
-
-//   const handleClick2 = () => {
-//     setName('Ahmid')
-//   }
-
-//   function Grids( props ) {
-//     return (
-//       <div className="flex flex-col items-center justify-evenly w-full h-52 lg:w-64 rounded-lg gap-4 border-2 !border-white-bg dark:!border-black-bg bg-white-contents dark:bg-black-contents">
-//         <div className='flex gap-5'>
-//           <button onClick={handleClick1} className="btn-main-normal text-black-text dark:text-white-text !font-medium bg-red-pri">{props.name}</button>
-//           <button onClick={handleClick2} className="btn-main-normal text-black-text dark:text-white-text !font-medium bg-blue-sec">{props.name}</button>
-//         </div>
-//         <span className="text-3xl font-medium">{name}</span>
-//       </div>
-//     )
-//   }
-
-//   return (
-//     <>
-//       <h3 className="text-center text-3xl">
-//         Home
-//       </h3>
-//       <div className="grid grid-cols-1 w-full justify-items-center md:grid-cols-3 gap-4 p-6">
-//         <Grids name={name} />
-//         <Grids name={name} />
-//         <Grids name={name} />
-//         <Grids name={name} />
-//         <Grids name={name} />
-//       </div>
-//     </>
-//   )
-// }
-
-// export default Home;
-import React, { useState } from "react";
-
-function Home() {
-  const [names, setNames] = useState(["Ahmid", "Ahmid", "Ahmid", "Ahmid", "Ahmid", "Ahmid", "Ahmid", "Ahmid", "Ahmid", "Ahmid", "Ahmid", "Ahmid"]);
-
-  const handleClick1 = (index) => {
-    const updatedNames = [...names];
-    updatedNames[index] = 'Tonai';
-    setNames(updatedNames);
-  };
-
-  const handleClick2 = (index) => {
-    const updatedNames = [...names];
-    updatedNames[index] = 'Ahmid';
-    setNames(updatedNames);
-  };
-
-  function Grids({ name, index }) {
-    return (
-      <div className="flex flex-col items-center justify-evenly w-full h-52 lg:w-64 rounded-lg gap-4 border-2 border-white-bg dark:border-black-bg bg-white-contents dark:bg-black-contents">
-        <span className="text-[2.5rem] text-green-pri font-semibold">{name}</span>
-        <div className='flex gap-5'>
-          <button onClick={() => handleClick1(index)} className="btn-main-normal text-black-text dark:text-white-text font-medium bg-red-pri">{name}</button>
-          <button onClick={() => handleClick2(index)} className="btn-main-normal text-black-text dark:text-white-text font-medium bg-blue-sec">{name}</button>
-        </div>
-
-      </div>
-    );
-  }
+function HomePage() {
 
   return (
-    <>
-      <h3 className="text-center text-3xl font-medium">
-        Home
-      </h3>
-      <div className="grid grid-cols-1 w-full justify-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-8 p-6">
-        {names.map((name, index) => (
-          <Grids key={index} name={name} index={index} />
-        ))}
+    <div className="flex flex-col justify-center items-center">
+      <h2 className="!text-3xl md:!text-4xl my-14 font-bold leading-normal">Welcome to Your Dashboard</h2>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-12">
+        <div className="card w-64 h-48 justify-start p-4 hover:shadow-green-pri hover:border-green-pri text-center flex-col flex items-center border-2 border-green-sec shadow-md hover:shadow-md hover:transition-all hover:duration-200 rounded-lg overflow-hidden">
+          <div className="p-4">
+            <h2 className="text-xl mb-2 font-bold text-red-pri">Orders</h2>
+          </div>
+          <div className="flex gap-2 p-4 bg-gray-200">
+            <Link to='/orders/control' className="btn-main-lg">
+              Control
+            </Link>
+            <Link to='/orders/status' className="btn-main-lg">
+              List
+            </Link>
+          </div>
+        </div>
+
+        <div className="card w-64 h-48 justify-start p-4 hover:shadow-green-pri hover:border-green-pri text-center flex-col flex items-center border-2 border-green-sec shadow-md hover:shadow-md hover:transition-all hover:duration-200 rounded-lg overflow-hidden">
+          <div className="p-4">
+            <h2 className="text-xl mb-2 font-bold text-green-pri">Users</h2>
+          </div>
+          <div className="flex gap-2 p-4 bg-gray-200">
+            <Link to='/users/control' className="btn-main-lg">
+              Control
+            </Link>
+            <Link to='/users/list' className="btn-main-lg">
+              List
+            </Link>
+          </div>
+        </div>
+
+        <div className="card w-64 h-48 justify-start p-4 hover:shadow-green-pri hover:border-green-pri text-center flex-col flex items-center border-2 border-green-sec shadow-md hover:shadow-md hover:transition-all hover:duration-200 rounded-lg overflow-hidden">
+          <div className="p-4">
+            <h2 className="text-xl mb-2 font-bold text-yellow-pri">Todos</h2>
+          </div>
+          <div className="flex gap-2 p-4 bg-gray-200">
+            <Link to='/todos' className="btn-main-lg">
+              Todos
+            </Link>
+            <Link to='/todos/list' className="btn-main-lg">
+              List
+            </Link>
+          </div>
+        </div>
       </div>
-    </>
-  );
+    </div>
+  )
 }
 
-export default Home;
+export default HomePage

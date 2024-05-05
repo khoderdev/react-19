@@ -8,18 +8,18 @@ export default {
     },
     colors: {
       green: {
-        pri: "#34d399",
-        sec: "#22c55e",
+        pri: "#22c55e",
+        sec: "#34d399",
       },
 
       yellow: {
         pri: "#eab308",
-        light: "##ffc81e",
+        light: "#ffc81e",
       },
 
       blue: {
-        pri: "#06b6d4",
-        sec: "#3b82f6",
+        pri: "#3b82f6",
+        sec: "#06b6d4",
       },
       red: {
         pri: "#ef4444",

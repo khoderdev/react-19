@@ -1,56 +1,83 @@
-import { Routes, Route, } from 'react-router-dom'
-import { useSelector } from 'react-redux';
+import { Suspense } from "react";
+import { Routes, Route } from 'react-router-dom'
 import Home from './components/Home'
 import Layout from './components/Layout'
 import Header from './components/Header'
-import Features from './components/Features'
-import Users from './components/Users'
-import Dashboard from './components/Dashboard'
-import Login from './components/Login'
 
-import OrdersControl from './components/examples/OrdersControl';
-import OrdersDisplay from './components/examples/OrdersDisplay';
-import UseReducerExample from './components/examples/UseReducerExample'
-import ReduxExample from './components/examples/CounterReduxExample'
-import NameReduxExample from './components/examples/NameReduxExample'
-import NameReduxDisplay from './components/examples/NameReduxDisplay'
-import UserButtonsUpdate from './components/examples/UserButtons'
-import UserDisplay from './components/examples/UserDisplay'
-import TaskManagerComponent from './components/TaskManagerComponent'
-import TaskComponent from './components/TaskComponent'
+import OrdersPage from './components/orders';
 
+import UsersPage from './components/users'
+import UsersControl from './components/users/UsersControl'
+import UsersList from './components/users/UsersList'
 
+import JotaiOrdersTable from './atom/examples/orders/OrdersTable';
+import JotaiOrdersList from  './atom/examples/orders/OrdersList';
+import JotaiOrdersForm from  './atom/examples/orders/OrdersForm';
+
+import OrdersTable from './components/orders/OrdersTable';
+import OrdersList from './components/orders/OrdersList';
+import Tables from "./components/Table";
+import Action from "./components/examples/Actions";
+import Optimistic from "./components/examples/Optimistic";
+import FormState from "./components/examples/FormState";
+import FormStatus from "./components/examples/FormStatus";
+import User from "./components/examples/Users";
+import Orders from "./components/examples/Orders";
+import TodoPage from "./components/todos/test2/";
+import TodoAdd from "./components/todos/test2/TodoAdd";
+import TodoList from "./components/todos/test2/TodoList";
 
 function App() {
-  const tasks = useSelector((state) => state.tasks);
+  // const todos = useSelector(state => state.todos);
+
 
   return (
     <>
-      <Header />
-      <Layout>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/orders/control' element={<OrdersControl />} />
-          <Route path='orders/status' element={<OrdersDisplay />} />
-          <Route path='/tasks/manager' element={<TaskManagerComponent />} />
-          <Route path='/tasks/list' element={<TaskComponent tasks={tasks} />
-          } />
 
-          <Route path='/nameRedux' element={<NameReduxExample />} />
-          <Route path='/nameDisplay' element={<NameReduxDisplay nameStatus={undefined} />} />
-          <Route path='/userUpdate' element={<UserButtonsUpdate />} />
-          <Route path='/userDisplay' element={<UserDisplay />} />
-          <Route path='/useReducer' element={<UseReducerExample />} />
-          <Route path='/reduxCounter' element={<ReduxExample />} />
+      <div>
+        <Suspense
+          fallback={
+            <h1 className="text-2xl text-center font-bold mt-5">Loading...</h1>
+          }
+        >
+          <Header />
+          <Layout>
+            <Routes>
+              <Route path='/' element={<Home />} />
 
-          <Route path='/users' element={<Users />} />
+              <Route path='/jotai/orders/table' element={<JotaiOrdersTable />} />
+              <Route path='/jotai/orders/new' element={<JotaiOrdersForm />} />
+              <Route path='/jotai/orders/list' element={<JotaiOrdersList />} />
 
-          <Route path='/features' element={<Features />} />
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/login' element={<Login />} />
-        </Routes>
-      </Layout>
+              <Route path='/action' element={<Action />} />
+              <Route path='/optimistic' element={<Optimistic />} />
+              <Route path='/FormStatus' element={<FormStatus />} />
+              <Route path='/FormState' element={<FormState />} />
+              <Route path='/user' element={<User />} />
+
+              <Route path='/orders' element={<OrdersPage />} />
+              <Route path='/orders/control' element={<OrdersTable />} />
+              <Route path='/orders/list' element={<OrdersList />} />
+
+              <Route path='/order' element={<Orders />} />
+
+              <Route path='/users' element={<UsersPage />} />
+              <Route path='/users/control' element={<UsersControl />} />
+              <Route path='/users/list' element={<UsersList />} />
+
+              <Route path='/tables' element={<Tables />} />
+
+              <Route path='/todos/2' element={<TodoPage />} />
+              <Route path='/todos/add' element={<TodoAdd />} />
+              <Route path='/todos/list' element={<TodoList />} />
+              {/* <Route path='/todos' element={<Todos />} />
+                <Route path='/todos/add' element={<Todo />} />
+                <Route path='/todos/list' element={<TodosList />} /> */}
+            </Routes>
+          </Layout>
+        </Suspense>
+      </div>
     </>
   );
 }
-export default App
+export default App;

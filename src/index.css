@@ -42,6 +42,9 @@ h2 {
 h3 {
   font-size: 35px !important;
 }
+h4 {
+  font-size: 28px !important;
+}
 
 .btn-main-normal {
   display: flex;
@@ -49,13 +52,12 @@ h3 {
   justify-content: space-between;
   border: solid transparent 2px;
   border-radius: 0.5rem;
-  /* padding: 4px; */
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 2px;
   padding-bottom: 2px;
   transition: all 0.3s ease;
-  /* background-color: #000; */
+  background-color: #000;
   cursor: pointer;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
   font-size: 16px;
@@ -67,6 +69,29 @@ h3 {
   /* color: #48ffbc; */
   background-color: transparent;
 }
+.btn-main-lg {
+  display: flex;
+  width: fit-content;
+  justify-content: space-between;
+  border: solid transparent 2px;
+  border-radius: 0.5rem;
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  transition: all 0.3s ease;
+  background-color: #000;
+  cursor: pointer;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.btn-main-lg:hover {
+  border-color: #34d399;
+  border-width: 2px;
+  background-color: transparent;
+}
 
 .btn-main-normal.dark {
   box-shadow: 0 0 1rem rgba(46, 204, 113, 0.1);
@@ -74,6 +99,103 @@ h3 {
 
 .btn-main-normal.dark:hover {
   box-shadow: 0 0 1.5rem rgba(46, 204, 113, 0.3);
+}
+
+.btn-bg-green {
+  display: flex;
+  width: fit-content;
+  justify-content: space-between;
+  border: solid transparent 2px;
+  border-radius: 0.5rem;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  transition: all 0.3s ease;
+  background-color: #22c55e;
+  cursor: pointer;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  font-weight: normal;
+  color: #000;
+}
+
+.btn-bg-green:hover {
+  border-color: #22c55e;
+  color: #fff;
+  background-color: transparent;
+}
+
+.btn-bordered-green {
+  display: flex;
+  width: fit-content;
+  justify-content: space-between;
+  border: solid #22c55e 2px;
+  border-radius: 0.5rem;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  transition: all 0.3s ease;
+  background-color: #000;
+  cursor: pointer;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.btn-bordered-green:hover {
+  border-color: #22c55e;
+  /* color: #48ffbc; */
+  background-color: #22c55e;
+}
+
+.btn-bordered-yellow {
+  display: flex;
+  width: fit-content;
+  justify-content: space-between;
+  border: solid #eab308 2px;
+  border-radius: 0.5rem;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  transition: all 0.3s ease;
+  background-color: #000;
+  cursor: pointer;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.btn-bordered-yellow:hover {
+  border-color: #eab308;
+  /* color: #48ffbc; */
+  background-color: #eab308;
+}
+
+.btn-bordered-red {
+  display: flex;
+  width: fit-content;
+  justify-content: space-between;
+  border: solid #ef4444 2px;
+  border-radius: 0.5rem;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  transition: all 0.3s ease;
+  background-color: #000;
+  cursor: pointer;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.btn-bordered-red:hover {
+  border-color: #ef4444;
+  /* color: #48ffbc; */
+  background-color: #ef4444;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
@@ -113,4 +235,3 @@ h3 {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
-
