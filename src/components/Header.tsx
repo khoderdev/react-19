@@ -79,7 +79,7 @@ export default function Header() {
                         <Link to="/users" className="text-md font-semibold leading-6 ">
                             Users
                         </Link>
-                        <Link to="/table" className="text-md font-semibold leading-6 ">
+                        <Link to="/tables" className="text-md font-semibold leading-6 ">
                             Tables
                         </Link>
                     </div>

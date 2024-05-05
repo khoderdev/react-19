@@ -15,7 +15,7 @@ import JotaiOrdersList from  './atom/examples/orders/OrdersList';
 
 import OrdersTable from './components/orders/OrdersTable';
 import OrdersList from './components/orders/OrdersList';
-import Table from "./components/Table";
+import Tables from "./components/Table";
 import Action from "./components/examples/Actions";
 import Optimistic from "./components/examples/Optimistic";
 import FormState from "./components/examples/FormState";
@@ -25,7 +25,6 @@ import Orders from "./components/examples/Orders";
 import TodoPage from "./components/todos/test2/";
 import TodoAdd from "./components/todos/test2/TodoAdd";
 import TodoList from "./components/todos/test2/TodoList";
-;
 
 function App() {
   // const todos = useSelector(state => state.todos);
@@ -64,7 +63,7 @@ function App() {
               <Route path='/users/control' element={<UsersControl />} />
               <Route path='/users/list' element={<UsersList />} />
 
-              <Route path='/table' element={<Table />} />
+              <Route path='/tables' element={<Tables />} />
 
               <Route path='/todos/2' element={<TodoPage />} />
               <Route path='/todos/add' element={<TodoAdd />} />
