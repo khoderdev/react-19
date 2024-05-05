@@ -187,111 +187,122 @@ const OrdersTable = () => {
     };
 
     return (
-        <div className="overflow-x-auto">
-            <h2 className="text-lg font-semibold">Orders Table</h2>
-            <button className="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded mt-2" onClick={() => setShowForm(true)}>Create</button>
-            <Modal isOpen={showForm} onClose={() => setShowForm(false)}>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                        <label className="block font-semibold">Drug Name:</label>
-                        <input
-                            type="text"
-                            name="DrugName"
-                            value={formData.DrugName}
-                            onChange={handleInputChange}
-                            className="bg-white-text dark:bg-black-contents border rounded px-3 w-full py-2"
-                        />
+        <>
+            <h2 className="text-lg text-center font-semibold mb-8">Orders Table</h2>
+            <div className="overflow-x-auto flex flex-col justify-center items-center ">
+
+                <Modal isOpen={showForm} onClose={() => setShowForm(false)}>
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        <div>
+                            <label className="block font-semibold">Drug Name:</label>
+                            <input
+                                type="text"
+                                name="DrugName"
+                                value={formData.DrugName}
+                                onChange={handleInputChange}
+                                className="bg-white-text dark:bg-black-contents border rounded px-3 w-full py-2"
+                            />
+                        </div>
+                        <div>
+                            <label className="block font-semibold">Quantity:</label>
+                            <input
+                                type="number"
+                                name="Quantity"
+                                value={formData.Quantity}
+                                onChange={handleInputChange}
+                                className="bg-white-text dark:bg-black-contents border rounded px-3 w-full py-2"
+                            />
+                        </div>
+                        <div>
+                            <label className="block font-semibold">Manufacturer:</label>
+                            <input
+                                type="text"
+                                name="Manufacturer"
+                                value={formData.Manufacturer}
+                                onChange={handleInputChange}
+                                className="bg-white-text dark:bg-black-contents border rounded px-3 w-full py-2"
+                            />
+                        </div>
+                        <div>
+                            <label className="block font-semibold">Country:</label>
+                            <input
+                                type="text"
+                                name="ManufacturerCountry"
+                                value={formData.ManufacturerCountry}
+                                onChange={handleInputChange}
+                                className="bg-white-text dark:bg-black-contents border rounded px-3 w-full py-2"
+                            />
+                        </div>
+                        <div className=''>
+                            <label className="block font-semibold">Status:</label>
+                            <select
+                                value={formData.Status}
+                                onChange={handleStatusChange}
+                                className="bg-white-text dark:bg-black-contents border rounded px-3 w-full py-2"
+                            >
+                                <option value="">Select status...</option>
+                                <option value="Pending" style={{ color: getStatusColor('Pending') }}>Pending</option>
+                                <option value="Accepted" style={{ color: getStatusColor('Accepted') }}>Accepted</option>
+                                <option value="Rejected" style={{ color: getStatusColor('Rejected') }}>Rejected</option>
+                                <option value="To be corrected" style={{ color: getStatusColor('To be corrected') }}>To be corrected</option>
+                            </select>
+                        </div>
+                        <button type="submit" className="font-bold py-2 px-4 rounded">
+                            {editMode ? 'Update' : 'Submit'}
+                        </button>
+                        <button onClick={editMode ? handleCancelEdit : handleCancelCreate} className=" font-bold py-2 px-4 rounded">
+                            Cancel
+                        </button>
+                    </form>
+                </Modal>
+                <Modal isOpen={showConfirmation} onClose={handleCancelDelete}>
+                    <div className="space-y-4">
+                        <p className="text-lg font-semibold">Confirm Deletion</p>
+                        <p>Are you sure you want to delete this order?</p>
+                        <div className="flex justify-end">
+                            <button onClick={confirmDelete} className="">Delete</button>
+                            <button onClick={handleCancelDelete} className="!border">Cancel</button>
+                        </div>
                     </div>
-                    <div>
-                        <label className="block font-semibold">Quantity:</label>
-                        <input
-                            type="number"
-                            name="Quantity"
-                            value={formData.Quantity}
-                            onChange={handleInputChange}
-                            className="bg-white-text dark:bg-black-contents border rounded px-3 w-full py-2"
-                        />
-                    </div>
-                    <div>
-                        <label className="block font-semibold">Manufacturer:</label>
-                        <input
-                            type="text"
-                            name="Manufacturer"
-                            value={formData.Manufacturer}
-                            onChange={handleInputChange}
-                            className="bg-white-text dark:bg-black-contents border rounded px-3 w-full py-2"
-                        />
-                    </div>
-                    <div>
-                        <label className="block font-semibold">Country:</label>
-                        <input
-                            type="text"
-                            name="ManufacturerCountry"
-                            value={formData.ManufacturerCountry}
-                            onChange={handleInputChange}
-                            className="bg-white-text dark:bg-black-contents border rounded px-3 w-full py-2"
-                        />
-                    </div>
-                    <div className=''>
-                        <label className="block font-semibold">Status:</label>
-                        <select
-                            value={formData.Status}
-                            onChange={handleStatusChange}
-                            className="bg-white-text dark:bg-black-contents border rounded px-3 w-full py-2"
-                        >
-                            <option value="">Select status...</option>
-                            <option value="Pending" style={{ color: getStatusColor('Pending') }}>Pending</option>
-                            <option value="Accepted" style={{ color: getStatusColor('Accepted') }}>Accepted</option>
-                            <option value="Rejected" style={{ color: getStatusColor('Rejected') }}>Rejected</option>
-                            <option value="To be corrected" style={{ color: getStatusColor('To be corrected') }}>To be corrected</option>
-                        </select>
-                    </div>
-                    <button type="submit" className="font-bold py-2 px-4 rounded">
-                        {editMode ? 'Update' : 'Submit'}
-                    </button>
-                    <button onClick={editMode ? handleCancelEdit : handleCancelCreate} className=" font-bold py-2 px-4 rounded">
-                        Cancel
-                    </button>
-                </form>
-            </Modal>
-            <Modal isOpen={showConfirmation} onClose={handleCancelDelete}>
-                <div className="space-y-4">
-                    <p className="text-lg font-semibold">Confirm Deletion</p>
-                    <p>Are you sure you want to delete this order?</p>
-                    <div className="flex justify-end">
-                        <button onClick={confirmDelete} className="bg-red-500 hover:bg-red-700 font-bold py-2 px-4 rounded">Delete</button>
-                        <button onClick={handleCancelDelete} className="bg-gray-500 hover:bg-gray-700 font-bold py-2 px-4 rounded ml-2">Cancel</button>
-                    </div>
+                </Modal>
+
+                <div className='w-full md:w-1/2 items-end flex flex-col'>
+                    <button className="btn-main-lg !bg-green-pri hover:!bg-white-bg dark:hover:!bg-black-contents dark:text-black-text !font-medium hover:!text-black-text dark:hover:!text-white-text" onClick={() => setShowForm(true)}>Create</button>
                 </div>
-            </Modal>
-            <table className="table-auto divide-y divide-gray-200 mt-4">
-                <thead className="">
-                    <tr>
-                        <th className="px-6 py-3 text-[#fff] text-left uppercase tracking-wider">Drug Name</th>
-                        <th className="px-6 py-3 text-[#fff] text-left uppercase tracking-wider">Quantity</th>
-                        <th className="px-6 py-3 text-[#fff] text-left uppercase tracking-wider">Manufacturer</th>
-                        <th className="px-6 py-3 text-[#fff] text-left uppercase tracking-wider">Country</th>
-                        <th className="px-6 py-3 text-[#fff] text-left uppercase tracking-wider">Status</th>
-                        <th className="px-6 py-3 text-red-pri text-left uppercase tracking-wider">Actions</th>
-                    </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200">
-                    {orders.map((order) => (
-                        <tr key={order.id}>
-                            <td className="px-6 py-3 whitespace-nowrap">{order.DrugName}</td>
-                            <td className="px-6 py-3 whitespace-nowrap">{order.Quantity}</td>
-                            <td className="px-6 py-3 whitespace-nowrap">{order.Manufacturer}</td>
-                            <td className="px-6 py-3 whitespace-nowrap">{order.ManufacturerCountry}</td>
-                            <td className="px-6 py-3 whitespace-nowrap font-semibold" style={{ color: getStatusColor(order.Status) }}>{order.Status}</td>
-                            <td className="px-6 py-3 whitespace-nowrap flex gap-2">
-                                <button onClick={() => handleEditOrder(order.id)} className="btn-bg-green">Edit</button>
-                                <button onClick={() => handleDeleteOrder(order.id)} className="btn-bordered-red">Delete</button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
+
+                <div className='w-full md:w-1/2 overflow-x-auto mt-4'>
+                    <table className="w-full divide-y divide-gray-700">
+                        <thead className="">
+                            <tr>
+                                <th className="px-6 py-3 dark:text-white text-left uppercase tracking-wider">Drug</th>
+                                <th className="px-6 py-3 dark:text-white text-left uppercase tracking-wider">Quantity</th>
+                                <th className="px-6 py-3 dark:text-white text-left uppercase tracking-wider">Manufacturer</th>
+                                <th className="px-6 py-3 dark:text-white text-left uppercase tracking-wider">Country</th>
+                                <th className="px-6 py-3 dark:text-white text-left uppercase tracking-wider">Status</th>
+                                <th className="px-6 py-3 text-red-pri text-left uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-200">
+                            {orders.map((order) => (
+                                <tr key={order.id}>
+                                    <td className="px-6 py-3 whitespace-nowrap">{order.DrugName}</td>
+                                    <td className="px-6 py-3 whitespace-nowrap">{order.Quantity}</td>
+                                    <td className="px-6 py-3 whitespace-nowrap">{order.Manufacturer}</td>
+                                    <td className="px-6 py-3 whitespace-nowrap">{order.ManufacturerCountry}</td>
+                                    <td className="px-6 py-3 whitespace-nowrap font-semibold" style={{ color: getStatusColor(order.Status) }}>{order.Status}</td>
+                                    <td className="px-6 py-3 whitespace-nowrap flex gap-2">
+                                        <button onClick={() => handleEditOrder(order.id)} className="btn-bg-green hover:text-black-text dark:hover:text-white-text">Edit</button>
+                                        <button onClick={() => handleDeleteOrder(order.id)} className="btn-bordered-red hover:bg-red-pri dark:hover:bg-red-pri bg-white-bg dark:bg-black-bg">Delete</button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </>
+
     );
 };
 
