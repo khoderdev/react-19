@@ -12,6 +12,7 @@ import UsersList from './components/users/UsersList'
 
 import JotaiOrdersTable from './atom/examples/orders/OrdersTable';
 import JotaiOrdersList from  './atom/examples/orders/OrdersList';
+import JotaiOrdersForm from  './atom/examples/orders/OrdersForm';
 
 import OrdersTable from './components/orders/OrdersTable';
 import OrdersList from './components/orders/OrdersList';
@@ -45,6 +46,7 @@ function App() {
               <Route path='/' element={<Home />} />
 
               <Route path='/jotai/orders/table' element={<JotaiOrdersTable />} />
+              <Route path='/jotai/orders/new' element={<JotaiOrdersForm />} />
               <Route path='/jotai/orders/list' element={<JotaiOrdersList />} />
 
               <Route path='/action' element={<Action />} />
