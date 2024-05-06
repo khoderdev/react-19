@@ -9,6 +9,7 @@ export const isLoggedInAtom = atom(false);
 export const isSubmitting = atom(false);
 export const successMessageTimeoutAtom = atom<NodeJS.Timeout | null>(null);
 export const todoListAtom = atom<string[]>([]);
+export const todoAtom = atomWithStorage("todos", []);
 export const token = "token";
 export const persistedIsLoggedInAtom = atomWithStorage("isLoggedIn", false);
 
@@ -20,6 +21,7 @@ const jotaiStore = createStore(
   successMessageTimeoutAtom,
   notifications,
   todoListAtom,
+  todoAtom,
   token,
   persistedIsLoggedInAtom
 );
