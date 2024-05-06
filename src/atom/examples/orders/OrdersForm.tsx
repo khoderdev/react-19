@@ -88,7 +88,7 @@ const Form = () => {
 
 
     const handleGoBack = () => {
-        navigate('/jotai/orders/list')
+        navigate('/orders')
     };
 
     return (

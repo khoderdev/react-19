@@ -7,17 +7,20 @@ import { Provider as JotaiProvider } from "jotai";
 import jotaiStore from "./atom/store.ts";
 import IsLoggedIn from "./components/IsLoggedIn.tsx";
 import { BrowserRouter } from "react-router-dom";
+import { AuthProvider } from "./contexts/authContext";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <JotaiProvider store={jotaiStore}>
-      <IsLoggedIn>
-        <DarkModeProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </DarkModeProvider>
-      </IsLoggedIn>
+      <AuthProvider>
+        <IsLoggedIn>
+          <DarkModeProvider>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </DarkModeProvider>
+        </IsLoggedIn>
+      </AuthProvider>
     </JotaiProvider>
   </React.StrictMode>
 );

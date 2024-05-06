@@ -12,13 +12,13 @@ function HomePage() {
             <h2 className="text-xl mb-2 font-bold text-red-pri">Jotai</h2>
           </div>
           <div className="flex gap-2 p-4 bg-gray-200">
-            <Link to='/jotai/orders/table' className="btn-main-lg !bg-white-contents dark:!bg-black-contents">
+            <Link to='/orders/admin' className="btn-main-lg !bg-white-contents dark:!bg-black-contents">
               Control
             </Link>
-            <Link to='/jotai/orders/new' className="btn-main-lg !bg-white-contents dark:!bg-black-contents">
+            <Link to='/orders/new' className="btn-main-lg !bg-white-contents dark:!bg-black-contents">
               Add New
             </Link>
-            <Link to='/jotai/orders/list' className="btn-main-lg !bg-white-contents dark:!bg-black-contents">
+            <Link to='/orders' className="btn-main-lg !bg-white-contents dark:!bg-black-contents">
               List
             </Link>
           </div>
