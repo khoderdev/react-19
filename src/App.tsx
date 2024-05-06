@@ -11,8 +11,8 @@ import UsersControl from './components/users/UsersControl'
 import UsersList from './components/users/UsersList'
 
 import JotaiOrdersTable from './atom/examples/orders/OrdersTable';
-import JotaiOrdersList from  './atom/examples/orders/OrdersList';
-import JotaiOrdersForm from  './atom/examples/orders/OrdersForm';
+import JotaiOrdersList from './atom/examples/orders/OrdersList';
+import JotaiOrdersForm from './atom/examples/orders/OrdersForm';
 
 import OrdersTable from './components/orders/OrdersTable';
 import OrdersList from './components/orders/OrdersList';
@@ -26,14 +26,11 @@ import Orders from "./components/examples/Orders";
 import TodoPage from "./components/todos/test2/";
 import TodoAdd from "./components/todos/test2/TodoAdd";
 import TodoList from "./components/todos/test2/TodoList";
+import PersonAndCars from "./atom/examples/orders/persons/";
 
 function App() {
-  // const todos = useSelector(state => state.todos);
-
-
   return (
     <>
-
       <div>
         <Suspense
           fallback={
@@ -44,6 +41,12 @@ function App() {
           <Layout>
             <Routes>
               <Route path='/' element={<Home />} />
+
+              <Route path='/persons' element={
+                <PersonAndCars />
+              }>
+              </Route>
+
 
               <Route path='/jotai/orders/table' element={<JotaiOrdersTable />} />
               <Route path='/jotai/orders/new' element={<JotaiOrdersForm />} />

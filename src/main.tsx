@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { Provider as JotaiProvider } from "jotai";
 import jotaiStore from './atom/store.ts';
 import IsLoggedIn from './components/IsLoggedIn.tsx';
-import { HashRouter as BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
