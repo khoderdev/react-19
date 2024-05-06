@@ -266,16 +266,16 @@ const OrdersTable = () => {
                     </div>
                 </Modal>
 
-                <div className='w-full md:w-1/2 items-end flex flex-col'>
+                <div className='w-full md:w-2/3 items-end flex flex-col'>
                     <button className="btn-main-lg !bg-green-pri hover:!bg-white-bg dark:hover:!bg-black-contents dark:text-black-text !font-medium hover:!text-black-text dark:hover:!text-white-text" onClick={() => setShowForm(true)}>Create</button>
                 </div>
 
-                <div className='w-full md:w-1/2 overflow-x-auto mt-4'>
+                <div className='w-full md:w-2/3 overflow-x-auto mt-4'>
                     <table className="w-full divide-y divide-gray-700">
                         <thead className="">
                             <tr>
                                 <th className="px-6 py-3 dark:text-white text-left uppercase tracking-wider">Drug</th>
-                                <th className="px-6 py-3 dark:text-white text-left uppercase tracking-wider">Quantity</th>
+                                <th className="px-6 py-3 dark:text-white text-left uppercase tracking-wider">QTY</th>
                                 <th className="px-6 py-3 dark:text-white text-left uppercase tracking-wider">Manufacturer</th>
                                 <th className="px-6 py-3 dark:text-white text-left uppercase tracking-wider">Country</th>
                                 <th className="px-6 py-3 dark:text-white text-left uppercase tracking-wider">Status</th>

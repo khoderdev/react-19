@@ -51,22 +51,6 @@ function HomePage() {
             </Link>
           </div>
         </div>
-
-
-
-        <div className="card justify-start p-4 hover:shadow-green-pri hover:border-green-pri text-center flex-col flex items-center border-2 border-green-sec shadow-md hover:shadow-md hover:transition-all hover:duration-200 rounded-lg overflow-hidden">
-          <div className="p-4">
-            <h2 className="text-xl mb-2 font-bold text-green-pri">Redux</h2>
-          </div>
-          <div className="flex gap-2 p-4 bg-gray-200">
-            <Link to='/orders/control' className="btn-main-lg !bg-white-contents dark:!bg-black-contents">
-              Control
-            </Link>
-            <Link to='/orders/list' className="btn-main-lg !bg-white-contents dark:!bg-black-contents">
-              List
-            </Link>
-          </div>
-        </div>
       </div>
     </div>
   );
