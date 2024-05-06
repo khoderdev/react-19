@@ -21,7 +21,6 @@ const products = [
 
 export default function Header() {
     const [isLoggedIn, setIsLoggedIn] = useAtom(persistedIsLoggedInAtom);
-    // const [isLoggedIn, setIsLoggedIn] = useAtom(isLoggedInAtom);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [prevScrollPos, setPrevScrollPos] = useState(0);
     const [visible, setVisible] = useState(true);
@@ -52,10 +51,10 @@ export default function Header() {
 
     return (
         <>
-            <header className={` text-black-text dark:text-white-text fixed top-0 border-b border-b-black-contents !drop-shadow-lg w-full transition-all duration-300 flex justify-center ${visible ? '' : ''}`} style={{ backgroundColor: 'rgba(0, 0, 0, 0.0)', backdropFilter: 'blur(10px)' }}>
+            <header className={`h-14  text-black-text dark:text-white-text fixed top-0 border-b border-b-white-contents dark:border-b-black-contents !drop-shadow-lg w-full transition-all duration-300 flex justify-center ${visible ? '' : ''}`} style={{ backgroundColor: 'rgba(0, 0, 0, 0.0)', backdropFilter: 'blur(10px)' }}>
                 <nav className="mx-auto flex items-center justify-between p-4 py-2 lg:px- max-w-screen-xl w-full" aria-label="Global">
                     <Link to="/" className="-m-1.5 p-1.5">
-                        <div className="!text-[3rem] font-bold !fo text-[#ef4444]">React 19</div>
+                        <div className="!text-[2.5rem] font-bold text-[#ef4444]">React 19</div>
                     </Link>
                     <div className="flex justify-center items-center lg:hidden gap-4">
                         <ThemeToggle />

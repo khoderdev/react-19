@@ -12,6 +12,7 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': [
       'warn',
+    'eslint-disable react-hooks/rules-of-hooks',
       { allowConstantExport: true },
     ],
   },

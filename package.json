@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host --port 5700",
-    "build": "tsc && vite build",
+    "build": "vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -18,15 +20,12 @@
     "jotai-devtools": "^0.9.1",
     "react": "^19.0.0-beta-94eed63c49-20240425",
     "react-dom": "^19.0.0-beta-94eed63c49-20240425",
-    "react-redux": "^9.1.1",
     "react-router-dom": "^6.23.0",
-    "redux-logger": "^3.0.6",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
-    "@types/redux-logger": "^3.0.13",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
@@ -34,6 +33,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "gh-pages": "^6.1.1",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.2.2",

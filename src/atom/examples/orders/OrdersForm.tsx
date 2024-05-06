@@ -19,7 +19,7 @@ const Form = () => {
         Status: 'Pending',
     });
     // Initialize a state variable successMessage using useState, representing the success message status with default value as false
-    const [successMessage, setSuccessMessage] = useState(true);
+    const [successMessage, setSuccessMessage] = useState(false);
     // Get successMessageTimeoutAtom directly from the store using Jotai's useAtom hook
     const [successMessageTimeout, setSuccessMessageTimeout] = useAtom(successMessageTimeoutAtom);
     const navigate = useNavigate()
@@ -93,70 +93,71 @@ const Form = () => {
 
     return (
         <form className='flex flex-col w-full items-center' onSubmit={handleSubmit}>
-            <div className='flex w-full items-center px-4 md:px-16'>
-                <span className='flex'>
-                    <ArrowLeftIcon className='w-8 md:w-12 cursor-pointer mr-1' onClick={handleGoBack} />
-                </span>
-                <p>Go to orders</p>
+        <div className='flex w-full items-center px-2 md:px-16 mb-4'>
+            <span className='flex'>
+                <ArrowLeftIcon className='w-8 md:w-12 cursor-pointer mr-1' onClick={handleGoBack} />
+            </span>
+            <p>Go to orders</p>
+        </div>
+        <h4 className='mb-4'>Add new order</h4>
+        {successMessage && (
+            <p className='text-xl font-semibold border rounded-md p-4 shadow-md shadow-[#22c55ea8] text-green-pri text-center my-6'>Order has been Submitted successfully!</p>
+        )}
+        <div className='flex flex-col md:w-80 lg:w-96 gap-4'>
+            <div>
+                <label htmlFor="DrugName">Drug Name:</label>
+                <input
+                    type="text"
+                    id="DrugName"
+                    name="DrugName"
+                    value={formData.DrugName}
+                    onChange={handleChange}
+                    required
+                    className="bg-white-text dark:bg-black-contents border rounded px-3 w-full py-2"
+                />
             </div>
-            <h4 className='flex'>Add new order  </h4>
-            {successMessage && (
-                <p className='text-xl font-semibold border rounded-md p-4 shadow-md shadow-[#22c55ea8] !text-green-pri text-center my-6'>Order has been Submitted successfully!</p>
-            )}
-            <div className='flex flex-col md:w-[30%] justify-center gap-4'>
-                <div>
-                    <label htmlFor="DrugName">Drug Name:</label>
-                    <input
-                        type="text"
-                        id="DrugName"
-                        name="DrugName"
-                        value={formData.DrugName}
-                        onChange={handleChange}
-                        required
-                        className="bg-white-text dark:bg-black-contents border rounded px-3 w-full py-2"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="Quantity">Quantity:</label>
-                    <input
-                        type="number"
-                        id="Quantity"
-                        name="Quantity"
-                        value={formData.Quantity}
-                        onChange={handleChange}
-                        required
-                        className="bg-white-text dark:bg-black-contents border rounded px-3 w-full py-2"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="Manufacturer">Manufacturer:</label>
-                    <input
-                        type="text"
-                        id="Manufacturer"
-                        name="Manufacturer"
-                        value={formData.Manufacturer}
-                        onChange={handleChange}
-                        required
-                        className="bg-white-text dark:bg-black-contents border rounded px-3 w-full py-2"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="ManufacturerCountry">Country:</label>
-                    <input
-                        type="text"
-                        id="ManufacturerCountry"
-                        name="ManufacturerCountry"
-                        value={formData.ManufacturerCountry}
-                        onChange={handleChange}
-                        required
-                        className="bg-white-text dark:bg-black-contents border rounded px-3 w-full py-2"
-                    />
-                </div>
-                <button className='btn-bg-green' type="submit" disabled={submitting}>
-                    {submitting ? 'Submitting...' : 'Submit'}
-                </button>
+            <div>
+                <label htmlFor="Quantity">Quantity:</label>
+                <input
+                    type="number"
+                    id="Quantity"
+                    name="Quantity"
+                    value={formData.Quantity}
+                    onChange={handleChange}
+                    required
+                    className="bg-white-text dark:bg-black-contents border rounded px-3 w-full py-2"
+                />
             </div>
-        </form>
+            <div>
+                <label htmlFor="Manufacturer">Manufacturer:</label>
+                <input
+                    type="text"
+                    id="Manufacturer"
+                    name="Manufacturer"
+                    value={formData.Manufacturer}
+                    onChange={handleChange}
+                    required
+                    className="bg-white-text dark:bg-black-contents border rounded px-3 w-full py-2"
+                />
+            </div>
+            <div>
+                <label htmlFor="ManufacturerCountry">Country:</label>
+                <input
+                    type="text"
+                    id="ManufacturerCountry"
+                    name="ManufacturerCountry"
+                    value={formData.ManufacturerCountry}
+                    onChange={handleChange}
+                    required
+                    className="bg-white-text dark:bg-black-contents border rounded px-3 w-full py-2"
+                />
+            </div>
+            <button className='btn-bg-green' type="submit" disabled={submitting}>
+                {submitting ? 'Submitting...' : 'Submit'}
+            </button>
+        </div>
+    </form>
+    
     );
 };
 

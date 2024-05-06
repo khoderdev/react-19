@@ -1,4 +1,4 @@
-const getStatusColor = (status) => {
+const getStatusColor = (status: string) => {
   switch (status) {
     case "Pending":
       return "#FFA500"; // Orange
