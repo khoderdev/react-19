@@ -6,6 +6,9 @@ import OrdersTable from "../atom/examples/orders/OrdersTable";
 import { useAtom } from "jotai";
 import { userRolesAtom } from "../atom/store";
 import ShieldIcon from "../../public/ShieldIcon";
+import Login from "../components/user/Login";
+import Register from "../components/user/Register";
+import UsersPage from "../components/users";
 
 const AppRoutes = () => {
   const [userRoles] = useAtom(userRolesAtom);
@@ -26,6 +29,8 @@ const AppRoutes = () => {
           <Route path="/orders/admin" element={<OrdersTable />} />
           <Route path="/orders/new" element={<OrdersForm />} />
           <Route path="/orders" element={<OrdersList />} />
+
+          <Route path="/users/admin" element={<UsersPage />} />
         </>
       )}
 
@@ -36,10 +41,16 @@ const AppRoutes = () => {
           <Route path="/orders/new" element={<OrdersForm />} />
         </>
       ) : (
-        <Route
-          path="/orders"
-          element={<Navigate to="/not-authorized" replace />}
-        />
+        <>
+          {/* <Route
+            path="/orders"
+            element={<Navigate to="/not-authorized" replace />}
+          /> */}
+          <Route
+            path="/*"
+            element={<Navigate to="/not-authorized" replace />}
+          />
+        </>
       )}
 
       {/* Render OrdersTable only if the user is an Admin */}
@@ -64,6 +75,9 @@ const AppRoutes = () => {
           </>
         }
       />
+
+      <Route path="/api/login" element={<Login />} />
+      <Route path="/api/register" element={<Register />} />
     </Routes>
   );
 };

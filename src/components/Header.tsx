@@ -79,44 +79,10 @@ export default function Header() {
     }
   };
 
-  // export default function Header() {
-  //   const [isLoggedIn, setIsLoggedIn] = useAtom(persistedIsLoggedInAtom);
-  //   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  //   const [prevScrollPos, setPrevScrollPos] = useState(0);
-  //   const [visible, setVisible] = useState(true);
-  //   const [, setUserName] = useAtom(userNameAtom);
-  //   const [, setUserRules] = useAtom(userRolesAtom);
-  //   const handleScroll = () => {
-  //     const currentScrollPos = window.pageYOffset;
-  //     setVisible(
-  //       (prevScrollPos > currentScrollPos &&
-  //         prevScrollPos - currentScrollPos > 70) ||
-  //         currentScrollPos < 10
-  //     );
-  //     setPrevScrollPos(currentScrollPos);
-  //   };
-
-  //   useEffect(() => {
-  //     window.addEventListener("scroll", handleScroll);
-  //     return () => window.removeEventListener("scroll", handleScroll);
-  //   }, [prevScrollPos, visible]);
-
-  //   const handleLogin = () => {
-  //     const foundUser = Users.find(
-  //       (user) => user.username === "admin" && user.password === "admin123"
-  //     );
-  //     if (foundUser) {
-  //       setIsLoggedIn(true);
-  //       // Set user name and rules after login
-  //       setUserName(foundUser.username);
-  //       setUserRules(foundUser.role);
-  //     }
-  //   };
-
-    const handleLogout = () => {
-      setIsLoggedIn(false); // Set isLoggedIn to false when logging out
-      setUserName(''); // Reset user name
-      setUserRules(''); // Reset user rules
+  const handleLogout = () => {
+    setIsLoggedIn(false); // Set isLoggedIn to false when logging out
+    setUserName(""); // Reset user name
+    setUserRoles([]); // Reset user rules
   };
 
   return (
@@ -237,7 +203,7 @@ export default function Header() {
                   )}
                 </Disclosure>
                 <Link
-                  to="/order"
+                  to="/orders/admin"
                   className="block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#34d399] hover:bg-[#242424]"
                 >
                   Order
