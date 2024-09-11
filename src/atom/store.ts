@@ -18,6 +18,9 @@ export const Users = [
   { username: "khoder", password: "admin123", role: "Admin" },
   { username: "ucef", password: "user123", role: "User" },
 ];
+export const userIdAtom = atomWithStorage("userId", 1);
+
+export const pageTitleAtom = atom("Home");
 
 const jotaiStore = createStore(
   ordersAtom,
@@ -30,7 +33,9 @@ const jotaiStore = createStore(
   todoAtom,
   tokenAtom,
   userRolesAtom,
-  persistedIsLoggedInAtom
+  userIdAtom,
+  persistedIsLoggedInAtom,
+  pageTitleAtom
 );
 
 export default jotaiStore;

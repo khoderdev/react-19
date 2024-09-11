@@ -13,16 +13,10 @@ const OrdersList = () => {
           <thead className="bg-gray-50">
             <tr>
               <th className="px-6 py-3 text-left font-medium dark:text-[#fff] dark uppercase tracking-wider">
-                Drug Name
+                Ordered Product
               </th>
               <th className="px-6 py-3 text-left font-medium dark:text-[#fff] dark uppercase tracking-wider">
                 Quantity
-              </th>
-              <th className="px-6 py-3 text-left font-medium dark:text-[#fff] dark uppercase tracking-wider">
-                Manufacturer
-              </th>
-              <th className="px-6 py-3 text-left font-medium dark:text-[#fff] dark uppercase tracking-wider">
-                Country
               </th>
               <th className="px-6 py-3 text-left font-medium dark:text-[#fff] dark uppercase tracking-wider">
                 Status
@@ -33,21 +27,23 @@ const OrdersList = () => {
             {orders.map((order) => (
               <tr key={order.id}>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  {order.DrugName}
+                  {order.productId}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   {order.Quantity}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  {order.Manufacturer}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {order.ManufacturerCountry}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
                   <span style={{ color: getStatusColor(order.Status) }}>
                     {order.Status}
                   </span>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">{order.userId}</td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  {order.warehouseId}
+                </td>
+
+                <td className="px-6 py-4 whitespace-nowrap">
+                  {order.branchId}
                 </td>
               </tr>
             ))}

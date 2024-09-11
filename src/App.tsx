@@ -1,4 +1,5 @@
-import Header from "./components/Header";
+// import Header from "./components/Header";
+import Header from "./containers/Header";
 import Layout from "./components/Layout";
 import AppRoutes from "./routes/Routes";
 

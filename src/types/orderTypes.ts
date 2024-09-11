@@ -1,22 +1,15 @@
 // Define types for the order data
-
 interface Order {
-  deliveryStatus: string;
-  DrugName: string;
+  ProductId: string;
   Quantity: string;
-  Manufacturer: string;
-  ManufacturerCountry: string;
+  UserId: number;
+  WarehouseId: string;
+  BranchId: string;
+  Status: string;
 }
 
 // Define types for the async thunk actions' payloads
-
-interface AddOrderPayload {
-  // Assuming orderData has a specific structure, define it here
-  // For example:
-  // productName: string;
-  // quantity: number;
-  // etc.
-}
+interface AddOrderPayload {}
 
 interface UpdateOrderPayload {
   orderId: string;
@@ -24,16 +17,9 @@ interface UpdateOrderPayload {
 }
 
 // Define the state type for the order slice
-
-interface OrderSliceState extends Order {
-  // Additional state properties can be added here if needed
-  // For example:
-  // orders: Order[];
-  // status: "idle" | "loading" | "succeeded" | "failed";
-}
+interface OrderSliceState extends Order {}
 
 // Define types for action payloads
-
 type DeliveryStatusPayload = string;
 type DrugNamePayload = string;
 type QuantityPayload = string;
@@ -95,3 +81,112 @@ export type {
   DeleteOrderFulfilledAction,
   OrderActionTypes,
 };
+
+// ///////////////////////////////////////
+// ///////////////////////////////////////
+// ///////////////////////////////////////
+// ///////////////////////////////////////
+
+// // Define types for the order data
+
+// interface Order {
+//   deliveryStatus: string;
+//   productId: string;
+//   Quantity: string;
+//   userId: string;
+//   warehouseId: string;
+//   branchId: string;
+// }
+
+// // Define types for the async thunk actions' payloads
+
+// interface AddOrderPayload {
+//   // Assuming orderData has a specific structure, define it here
+//   // For example:
+//   // productName: string;
+//   // quantity: number;
+//   // etc.
+// }
+
+// interface UpdateOrderPayload {
+//   orderId: string;
+//   updatedOrderData: Partial<Order>; // Assuming only some fields of the order can be updated
+// }
+
+// // Define the state type for the order slice
+
+// interface OrderSliceState extends Order {
+//   // Additional state properties can be added here if needed
+//   // For example:
+//   // orders: Order[];
+//   // status: "idle" | "loading" | "succeeded" | "failed";
+// }
+
+// // Define types for action payloads
+
+// type StatusPayload = string;
+// type ProductIdPayload = string;
+// type QuantityPayload = string;
+// type UserPayload = string;
+// type WarehouseIdPayload = string;
+// type ManufacturerCountryPayload = string;
+
+// // Define the action types
+
+// type UpdateStatusAction = {
+//   type: string;
+//   payload: StatusPayload;
+// };
+// type UpdateProductIdAction = { type: string; payload: ProductIdPayload };
+// type UpdateQuantityAction = { type: string; payload: QuantityPayload };
+// type UpdateManufacturerAction = { type: string; payload: UserPayload };
+// type WarehouseIdountryAction = {
+//   type: string;
+//   payload: ManufacturerCountryPayload;
+// };
+// type UpdateManufacturerCountryAction = {
+//   type: string;
+//   payload: ManufacturerCountryPayload;
+// };
+// type FetchOrdersFulfilledAction = { type: string; payload: Order[] }; // Assuming orders are fetched as an array
+// type AddOrderFulfilledAction = { type: string; payload: Order }; // Assuming the added order is returned
+// type AddOrderRejectedAction = { type: string; error: any }; // Assuming error handling is consistent
+// type UpdateOrderFulfilledAction = { type: string; payload: Order }; // Assuming the updated order is returned
+// type DeleteOrderFulfilledAction = { type: string; payload: string }; // Assuming orderId is returned after deletion
+
+// // Define the union type for all action types
+
+// type OrderActionTypes =
+//   | UpdateStatusAction
+//   | UpdateProductIdAction
+//   | UpdateQuantityAction
+//   | UpdateManufacturerAction
+//   | UpdateManufacturerCountryAction
+//   | FetchOrdersFulfilledAction
+//   | AddOrderFulfilledAction
+//   | AddOrderRejectedAction
+//   | UpdateOrderFulfilledAction
+//   | DeleteOrderFulfilledAction;
+
+// export type {
+//   Order,
+//   AddOrderPayload,
+//   UpdateOrderPayload,
+//   OrderSliceState,
+//   StatusPayload,
+//   ProductIdPayload,
+//   QuantityPayload,
+//   UserPayload,
+//   WarehouseIdPayload,
+//   UpdateStatusAction,
+//   UpdateProductIdAction,
+//   UpdateQuantityAction,
+//   UpdateManufacturerAction,
+//   UpdateManufacturerCountryAction,
+//   FetchOrdersFulfilledAction,
+//   AddOrderFulfilledAction,
+//   AddOrderRejectedAction,
+//   UpdateOrderFulfilledAction,
+//   DeleteOrderFulfilledAction,
+//   OrderActionTypes,
+// };

@@ -29,8 +29,6 @@ const AppRoutes = () => {
           <Route path="/orders/admin" element={<OrdersTable />} />
           <Route path="/orders/new" element={<OrdersForm />} />
           <Route path="/orders" element={<OrdersList />} />
-
-          <Route path="/users/admin" element={<UsersPage />} />
         </>
       )}
 
@@ -42,14 +40,14 @@ const AppRoutes = () => {
         </>
       ) : (
         <>
-          {/* <Route
+          <Route
             path="/orders"
             element={<Navigate to="/not-authorized" replace />}
-          /> */}
-          <Route
+          />
+          {/* <Route
             path="/*"
             element={<Navigate to="/not-authorized" replace />}
-          />
+          /> */}
         </>
       )}
 
